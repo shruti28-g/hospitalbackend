@@ -9,44 +9,23 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/patients")
-
 public class PatientController {
 
     @Autowired
     PatientRepository repo;
 
-
-
     @GetMapping
-
-    public List<Patient> getAllPatients(){
-
+    public List<Patient> getAllPatients() {
         return repo.findAll();
-
     }
-
-
 
     @PostMapping
-
-    public Patient addPatient(
-
-            @RequestBody Patient patient){
-
+    public Patient addPatient(@RequestBody Patient patient) {
         return repo.save(patient);
-
     }
-
-
 
     @DeleteMapping("/{id}")
-
-    public void deletePatient(
-
-            @PathVariable int id){
-
+    public void deletePatient(@PathVariable Long id) {
         repo.deleteById(id);
-
     }
-
 }
